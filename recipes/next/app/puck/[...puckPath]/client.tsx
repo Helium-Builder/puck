@@ -9,6 +9,13 @@ export function Client({ path, data }: { path: string; data: Data }) {
     <Puck
       config={config}
       data={data}
+      overrides={{
+        components(props) {
+            return <div>
+              haskhu
+            </div>
+        },
+      }}
       onPublish={async (data: Data) => {
         await fetch("/puck/api", {
           method: "post",

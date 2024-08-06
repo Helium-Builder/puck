@@ -4,6 +4,8 @@ import { Button, Data, Puck, Render } from "@/core";
 import headingAnalyzer from "@/plugin-heading-analyzer/src/HeadingAnalyzer";
 import config, { UserConfig } from "../../config";
 import { useDemoData } from "../../lib/use-demo-data";
+import { LeftDrawer } from "./_components/LeftDrawer";
+import { Handler } from "./_components/Handler";
 
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   const { data, resolvedData, key } = useDemoData({
@@ -22,20 +24,19 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
           }}
           plugins={[headingAnalyzer]}
           headerPath={path}
-          overrides={{
-            headerActions: ({ children }) => (
-              <>
-                <div>
-                  <Button href={path} newTab variant="secondary">
-                    View page
-                  </Button>
-                </div>
-
-                {children}
-              </>
-            ),
-          }}
-        />
+        >
+          <div
+            style={{
+              height: "100vh",
+              display: "grid",
+              gridTemplateColumns: "200px 1fr",
+            }}
+          >
+            <LeftDrawer />
+            <Puck.Preview />
+            <Handler />
+          </div>
+        </Puck>
       </div>
     );
   }
