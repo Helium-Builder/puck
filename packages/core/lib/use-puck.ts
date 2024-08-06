@@ -7,6 +7,7 @@ export const usePuck = () => {
     history,
     dispatch,
     selectedItem,
+    updateOverride,
   } = useAppContext();
 
   return {
@@ -25,5 +26,6 @@ export const usePuck = () => {
       historyStore: history.historyStore,
     },
     selectedItem: selectedItem || null,
+    updateOverride,
   };
 };

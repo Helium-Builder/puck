@@ -1,6 +1,9 @@
 import { ReactElement, ReactNode } from "react";
 import { Field, FieldProps } from "./Fields";
 import { ItemSelector } from "../lib/get-item";
+import { DropResult } from "@measured/dnd/dist/dnd";
+import { AppState } from "./Config";
+import { PuckAction } from "../reducer";
 
 // Plugins can use `usePuck` instead of relying on props
 type RenderFunc<
@@ -66,3 +69,24 @@ export type FieldRenderFunctions = Omit<
     }
   >;
 };
+
+export enum EOverrideFunctionId {
+  onDragEnd = "onDragEnd",
+}
+
+export type OverrideFunctionProps = {
+  droppedItem: DropResult;
+  appState: AppState;
+  dispatch: (action: PuckAction) => void;
+};
+
+export type OverrideFunction = (args: OverrideFunctionProps) => boolean;
+
+export type UpdateOverride = (
+  id: EOverrideFunctionId,
+  fn: OverrideFunction
+) => void;
+
+export interface OverrideState {
+  [key: string]: OverrideFunction;
+}

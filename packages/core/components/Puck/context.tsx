@@ -9,7 +9,11 @@ import { AppState, Config, UiState } from "../../types/Config";
 import { PuckAction } from "../../reducer";
 import { getItem } from "../../lib/get-item";
 import { Plugin } from "../../types/Plugin";
-import { Overrides } from "../../types/Overrides";
+import {
+  OverrideState,
+  Overrides,
+  UpdateOverride,
+} from "../../types/Overrides";
 import { PuckHistory } from "../../lib/use-puck-history";
 import { defaultViewports } from "../ViewportControls/default-viewports";
 import { Viewports } from "../../types/Viewports";
@@ -60,6 +64,7 @@ type AppContext<UserConfig extends Config = Config> = {
   setStatus: (status: Status) => void;
   iframe: IframeConfig;
   safariFallbackMode?: boolean;
+  updateOverride: UpdateOverride;
 };
 
 const defaultContext: AppContext = {
@@ -82,6 +87,7 @@ const defaultContext: AppContext = {
   setStatus: () => null,
   iframe: {},
   safariFallbackMode: false,
+  updateOverride: () => {},
 };
 
 export const appContext = createContext<AppContext>(defaultContext);

@@ -5,9 +5,10 @@ import {
   useEffect,
   useMemo,
   useReducer,
+  useRef,
   useState,
 } from "react";
-import { DragStart, DragUpdate } from "@measured/dnd";
+import { DragStart, DragUpdate, DropResult } from "@measured/dnd";
 
 import type { AppState, Config, Data, UiState } from "../../types/Config";
 import { Button } from "../Button";
@@ -47,6 +48,7 @@ import { defaultViewports } from "../ViewportControls/default-viewports";
 import { Viewports } from "../../types/Viewports";
 import { DragDropContext } from "../DragDropContext";
 import { IframeConfig } from "../../types/IframeConfig";
+import { useFunctionOverride } from "../../lib/use-function-override";
 
 const getClassName = getClassNameFactory("Puck", styles);
 const getLayoutClassName = getClassNameFactory("PuckLayout", styles);
@@ -101,6 +103,8 @@ export function Puck<UserConfig extends Config = Config>({
   };
 }) {
   const historyStore = useHistoryStore(initialHistory);
+
+  const { override, updateOverride } = useFunctionOverride();
 
   const [reducer] = useState(() =>
     createReducer<UserConfig>({ config, record: historyStore.record })
@@ -380,6 +384,10 @@ export function Puck<UserConfig extends Config = Config>({
     ? selectedComponentConfig?.["label"] ?? selectedItem.type.toString()
     : "";
 
+  const groupDropProvider = () => {
+    alert("CUSTOM PROVIDER RENDERED");
+  };
+
   return (
     <div className={`Puck ${getClassName()}`}>
       <AppProvider
@@ -394,6 +402,7 @@ export function Puck<UserConfig extends Config = Config>({
           history,
           viewports,
           iframe,
+          updateOverride,
         }}
       >
         <DragDropContext
@@ -408,6 +417,17 @@ export function Puck<UserConfig extends Config = Config>({
             dispatch({ type: "setUi", ui: { isDragging: true } });
           }}
           onDragEnd={(droppedItem) => {
+            // custom droppable override
+            if (
+              override?.onDragEnd?.({
+                droppedItem,
+                appState,
+                dispatch,
+              })
+            ) {
+              return;
+            }
+
             setDraggedItem(undefined);
             dispatch({ type: "setUi", ui: { isDragging: false } });
 

@@ -5,6 +5,7 @@ export type { PuckAction } from "./reducer/actions";
 export * from "./types/Config";
 export * from "./types/Plugin";
 export * from "./types/Fields";
+export * from "./types/Overrides";
 
 export * from "./components/AutoField";
 export * from "./components/Button";
