@@ -6,8 +6,8 @@ const usePuckLayout = () => {
   const { config } = usePuck();
 
   const components = useMemo(() => {
-    const categories = config.categories;
-    const components = config.components;
+    const categories = config?.categories || [];
+    const components = config?.components || [];
     const componentMap = new Map<string, { id: number; name: string }>();
 
     Object.keys(components).forEach((key, index) => {

@@ -1,4 +1,4 @@
-import type { Config } from "@measured/puck";
+import type { Config } from "@helium-builder/puck";
 
 type Props = {
   HeadingBlock: { title: string };

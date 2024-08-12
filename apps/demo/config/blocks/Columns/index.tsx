@@ -49,7 +49,7 @@ export const Columns: ComponentConfig<ColumnsProps> = {
     distribution: "auto",
     columns: [{}, {}],
   },
-  render: ({ columns, distribution }) => {
+  render: ({ columns, distribution, puck }) => {
     return (
       <Section>
         <div
@@ -73,10 +73,9 @@ export const Columns: ComponentConfig<ColumnsProps> = {
                     : "",
               }}
             >
-              <DropZone
-                zone={`column-${idx}`}
-                disallow={["Hero", "Logos", "Stats"]}
-              />
+              {puck.renderDropZone({
+                zone: `column-${idx}`,
+              })}
             </div>
           ))}
         </div>

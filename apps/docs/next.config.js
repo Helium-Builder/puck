@@ -28,7 +28,7 @@ module.exports = withNextra({
       },
     ];
   },
-  transpilePackages: ["@measured/puck"],
+  transpilePackages: ["@helium-builder/puck"],
   basePath: IS_RELEASE_BRANCH
     ? `/v/${packageJson.version}`
     : process.env.NEXT_PUBLIC_IS_CANARY

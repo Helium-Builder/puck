@@ -6,11 +6,11 @@ The visual editor for React.
   <a aria-label="Measured logo" href="https://measured.co">
     <img src="https://img.shields.io/badge/MADE%20BY%20Measured-000000.svg?style=for-the-badge&labelColor=000">
   </a>
-  <a aria-label="NPM version" href="https://www.npmjs.com/package/@measured/puck">
-    <img alt="" src="https://img.shields.io/npm/v/@measured/puck.svg?style=for-the-badge&labelColor=000000">
+  <a aria-label="NPM version" href="https://www.npmjs.com/package/@helium-builder/puck">
+    <img alt="" src="https://img.shields.io/npm/v/@helium-builder/puck.svg?style=for-the-badge&labelColor=000000">
   </a>
   <a aria-label="License" href="https://github.com/measuredco/puck/blob/main/LICENSE">
-    <img alt="" src="https://img.shields.io/npm/l/@measured/puck.svg?style=for-the-badge&labelColor=000000">
+    <img alt="" src="https://img.shields.io/npm/l/@helium-builder/puck.svg?style=for-the-badge&labelColor=000000">
   </a>
   <a aria-label="Join the community on Discord" href="https://discord.gg/D9e4E3MQVZ">
     <img alt="" src="https://img.shields.io/badge/Join%20the%20Discord-blueviolet.svg?style=for-the-badge&logo=Discord&labelColor=000000&logoWidth=20">
@@ -33,15 +33,15 @@ Visit https://puckeditor.com to view the full documentation.
 Install the package:
 
 ```sh
-npm i @measured/puck --save # or npx create-puck-app my-app
+npm i @helium-builder/puck --save # or npx create-puck-app my-app
 ```
 
 Render the editor:
 
 ```jsx
 // Editor.jsx
-import { Puck } from "@measured/puck";
-import "@measured/puck/puck.css";
+import { Puck } from "@helium-builder/puck";
+import "@helium-builder/puck/puck.css";
 
 // Create Puck component config
 const config = {
@@ -75,8 +75,8 @@ Render the page:
 
 ```jsx
 // Page.jsx
-import { Render } from "@measured/puck";
-import "@measured/puck/puck.css";
+import { Render } from "@helium-builder/puck";
+import "@helium-builder/puck/puck.css";
 
 export function Page() {
   return <Render config={config} data={data} />;

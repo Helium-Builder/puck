@@ -5,11 +5,11 @@ Select [entries](https://www.contentful.com/developers/docs/references/content-d
 ## Quick start
 
 ```sh
-npm i @measured/puck-field-contentful
+npm i @helium-builder/puck-field-contentful
 ```
 
 ```jsx
-import createFieldContentful from "@measured/puck-field-contentful";
+import createFieldContentful from "@helium-builder/puck-field-contentful";
 
 const config = {
   components: {

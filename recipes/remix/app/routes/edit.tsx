@@ -1,5 +1,5 @@
-import { Puck, type Data, type Config } from "@measured/puck";
-import styles from "@measured/puck/puck.css";
+import { Puck, type Data, type Config } from "@helium-builder/puck";
+import styles from "@helium-builder/puck/puck.css";
 import type {
   ActionFunctionArgs,
   LinksFunction,

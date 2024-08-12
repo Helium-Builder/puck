@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 
 import styles from "./HeadingAnalyzer.module.css";
 
-import { usePuck } from "@measured/puck";
+import { usePuck } from "@helium-builder/puck";
 import { Plugin } from "@/core/types/Plugin";
 import { SidebarSection } from "@/core/components/SidebarSection";
 import { OutlineList } from "@/core/components/OutlineList";

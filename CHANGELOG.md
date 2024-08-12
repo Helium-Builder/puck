@@ -181,7 +181,7 @@
 
 ### Features
 
-* support React server components via @measured/puck/rsc bundle ([90ac161](https://github.com/measuredco/puck/commit/90ac161513d0c8c84f6b2bb968f7e5400c732a0a))
+* support React server components via @helium-builder/puck/rsc bundle ([90ac161](https://github.com/measuredco/puck/commit/90ac161513d0c8c84f6b2bb968f7e5400c732a0a))
 * add remix recipe ([f882878](https://github.com/measuredco/puck/commit/f882878e081b44a2b0bd1f773114f3c35b8398b1))
 * add explicit rsc and css exports ([0b6a527](https://github.com/measuredco/puck/commit/0b6a52792628225d392775ba6b3d549aab5be59b))
 * improve responsive behaviour ([889b4c7](https://github.com/measuredco/puck/commit/889b4c7a91f1a9b95c9fd7d4b3cdb20b2ee4946b))

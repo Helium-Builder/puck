@@ -1,4 +1,4 @@
 module.exports = {
   reactStrictMode: false,
-  transpilePackages: ["@measured/puck", "lucide-react"],
+  transpilePackages: ["@helium-builder/puck", "lucide-react"],
 };

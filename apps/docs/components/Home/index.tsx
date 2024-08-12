@@ -36,8 +36,8 @@ export const Home = () => {
         </div>
         <div style={{ paddingTop: 32 }} />
         <pre style={{ padding: 0, margin: 0 }}>
-          <span style={{ userSelect: "none" }}>~ </span>npm i @measured/puck
-          --save
+          <span style={{ userSelect: "none" }}>~ </span>npm i
+          @helium-builder/puck --save
         </pre>
       </div>
     </div>

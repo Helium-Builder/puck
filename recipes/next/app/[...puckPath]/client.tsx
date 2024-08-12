@@ -1,7 +1,7 @@
 "use client";
 
-import type { Data } from "@measured/puck";
-import { Render } from "@measured/puck";
+import type { Data } from "@helium-builder/puck";
+import { Render } from "@helium-builder/puck";
 import config from "../../puck.config";
 
 export function Client({ data }: { data: Data }) {
