@@ -61,15 +61,15 @@ export const Columns: ComponentConfig<ColumnsProps> = {
                 : `repeat(${columns.length}, 1fr)`,
           }}
         >
-          {columns.map(({ span }, idx) => (
+          {Array.from({ length: columns.length }).map((_, idx) => (
             <div
               key={idx}
               style={{
                 display: "flex",
                 flexDirection: "column",
                 gridColumn:
-                  span && distribution === "manual"
-                    ? `span ${Math.max(Math.min(span, 12), 1)}`
+                  columns[idx].span && distribution === "manual"
+                    ? `span ${Math.max(Math.min(columns[idx].span, 12), 1)}`
                     : "",
               }}
             >

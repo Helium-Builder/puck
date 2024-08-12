@@ -6,6 +6,7 @@ import { getClassNameFactory } from "@/core/lib";
 import { Button } from "@/core/components/Button";
 import { Section } from "../../components/Section";
 import { quotes } from "./quotes";
+import ProfilerWrapper from "../../ProfilerWrapper";
 
 const getClassName = getClassNameFactory("Hero", styles);
 
@@ -174,68 +175,84 @@ export const Hero: ComponentConfig<HeroProps> = {
 
     return fields;
   },
-  render: ({ align, title, description, buttons, padding, image, puck }) => {
-    // Empty state allows us to test that components support hooks
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [_] = useState(0);
+  render: React.memo(
+    ({ align, title, description, buttons, padding, image, puck }) => {
+      // Empty state allows us to test that components support hooks
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const [_] = useState(0);
 
-    return (
-      <Section
-        padding={padding}
-        className={getClassName({
-          left: align === "left",
-          center: align === "center",
-          hasImageBackground: image?.mode === "background",
-        })}
-      >
-        {image?.mode === "background" && (
-          <>
-            <div
-              className={getClassName("image")}
-              style={{
-                backgroundImage: `url("${image?.url}")`,
-              }}
-            ></div>
+      return (
+        <ProfilerWrapper id="Hero">
+          <Section
+            padding={padding}
+            className={getClassName({
+              left: align === "left",
+              center: align === "center",
+              hasImageBackground: image?.mode === "background",
+            })}
+          >
+            {image?.mode === "background" && (
+              <>
+                <div
+                  className={getClassName("image")}
+                  style={{
+                    backgroundImage: `url("${image?.url}")`,
+                  }}
+                ></div>
 
-            <div className={getClassName("imageOverlay")}></div>
-          </>
-        )}
+                <div className={getClassName("imageOverlay")}></div>
+              </>
+            )}
 
-        <div className={getClassName("inner")}>
-          <div className={getClassName("content")}>
-            <h1>{title}</h1>
-            <p className={getClassName("subtitle")}>{description}</p>
-            <div className={getClassName("actions")}>
-              {buttons.map((button, i) => (
-                <Button
-                  key={i}
-                  href={button.href}
-                  variant={button.variant}
-                  size="large"
-                  tabIndex={puck.isEditing ? -1 : undefined}
-                >
-                  {button.label}
-                </Button>
-              ))}
+            <div className={getClassName("inner")}>
+              <div className={getClassName("content")}>
+                <h1>{title}</h1>
+                <p className={getClassName("subtitle")}>{description}</p>
+                <div className={getClassName("actions")}>
+                  {buttons.map((button, i) => (
+                    <Button
+                      key={i}
+                      href={button.href}
+                      variant={button.variant}
+                      size="large"
+                      tabIndex={puck.isEditing ? -1 : undefined}
+                    >
+                      {button.label}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {align !== "center" &&
+                image?.mode !== "background" &&
+                image?.url && (
+                  <div
+                    style={{
+                      backgroundImage: `url('${image?.url}')`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      borderRadius: 24,
+                      height: 356,
+                      marginLeft: "auto",
+                      width: "100%",
+                    }}
+                  />
+                )}
             </div>
-          </div>
-
-          {align !== "center" && image?.mode !== "background" && image?.url && (
-            <div
-              style={{
-                backgroundImage: `url('${image?.url}')`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                borderRadius: 24,
-                height: 356,
-                marginLeft: "auto",
-                width: "100%",
-              }}
-            />
-          )}
-        </div>
-      </Section>
-    );
-  },
+          </Section>
+        </ProfilerWrapper>
+      );
+    },
+    (prev, next) => {
+      return (
+        prev.align === next.align &&
+        prev.title === next.title &&
+        prev.description === next.description &&
+        prev.buttons === next.buttons &&
+        prev.padding === next.padding &&
+        prev.image?.mode === next.image?.mode
+      );
+    }
+  ),
 };

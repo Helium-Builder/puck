@@ -1,11 +1,13 @@
 "use client";
 
-import { Button, Data, Puck, Render } from "@/core";
+import { Button, Data, Puck, Render } from "@/core/index";
 import headingAnalyzer from "@/plugin-heading-analyzer/src/HeadingAnalyzer";
 import config, { UserConfig } from "../../config";
 import { useDemoData } from "../../lib/use-demo-data";
 import { LeftDrawer } from "./_components/LeftDrawer";
 import { Handler } from "./_components/Handler";
+import PuckLayout from "./_components/PuckLayout";
+import RightDrawer from "./_components/RightDrawer";
 
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   const { data, resolvedData, key } = useDemoData({
@@ -13,10 +15,12 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
     isEdit,
   });
 
+  console.log(Puck);
+
   if (isEdit) {
     return (
       <div>
-        <Puck<UserConfig>
+        <Puck
           config={config}
           data={data}
           onPublish={async (data: Data) => {
@@ -29,12 +33,15 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
             style={{
               height: "100vh",
               display: "grid",
-              gridTemplateColumns: "200px 1fr",
+              gridTemplateColumns: "200px 1fr 200px",
             }}
           >
-            <LeftDrawer />
-            <Puck.Preview />
-            <Handler />
+            <PuckLayout>
+              <LeftDrawer />
+              <Puck.Preview />
+              <RightDrawer />
+              <Handler />
+            </PuckLayout>
           </div>
         </Puck>
       </div>
