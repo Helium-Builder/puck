@@ -1,6 +1,6 @@
 {
   "name": "@helium-builder/puck",
-  "version": "0.15.4",
+  "version": "0.15.6",
   "author": "fork of @helium-builder/puck, used in get-helium",
   "repository": "Helium-Builder/puck",
   "bugs": "https://github.com/Helium-Builder/puck/issues",
